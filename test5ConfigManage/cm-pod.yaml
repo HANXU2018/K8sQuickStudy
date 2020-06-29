@@ -6,10 +6,10 @@ spec:
   containers:
     - name: test-container
       image: busybox
-      command: ["/bin/sh","-c","cat /etc/config/keys"]
+      command: [ "/bin/sh","-c","ls /etc/" ]
       volumeMounts:
         - name: config-volume
-          mountPath: /etc/config
+          mountPath: /etc/
   volumes:
     - name: config-volume
       configMap:
