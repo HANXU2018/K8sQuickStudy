@@ -8,13 +8,13 @@ spec:
       image: busybox
       command: [ "/bin/sh","-c","ls /etc/" ]
       volumeMounts:
-        - name: config-volume
-          mountPath: /etc/
+      - name: config-volume
+        mountPath: /etc/
   volumes:
     - name: config-volume
       configMap:
-        name: special-configig
+        name: special-config
         items:
-          - key: special.level
-            path: keys
+        - key: special.level
+          path: keys
   restartPolicy: Never
