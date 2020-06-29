@@ -1,11 +1,11 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: task-pv-claim
+  name: hostpath-test-claim
 spec:
-  storageClassName: manual
+  storageClassName: "hostpath"
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 3Gi
+      storage: 1Mi
