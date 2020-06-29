@@ -6,11 +6,12 @@ spec:
   containers:
     - name: test-container
       image: busybox
-      command: ["/bin/sh","-c","env"]
-      env:
-        - name: SPECIAL_LEVEL_KEY
-          valueFrom:
-            configMapKeyRef:
-              name: special-config
-              key: special.how
+      command: ["/bin/sh","-c","ls /etc/config/"]
+      volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+  volumes:
+    - name: config-volume
+      configMap:
+        name: special-config
   restartPolicy: Never
