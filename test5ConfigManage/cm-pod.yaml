@@ -6,15 +6,16 @@ spec:
   containers:
     - name: test-container
       image: busybox
-      command: [ "/bin/sh","-c","ls /etc/" ]
+      command: ["/bin/sh", "-c", "ls /etc/"]
       volumeMounts:
-      - name: config-volume
-        mountPath: /etc/
+        - name: config-volume
+          mountPath: /etc/keys
+          subPath: keys
   volumes:
     - name: config-volume
       configMap:
         name: special-config
         items:
-        - key: special.level
-          path: keys
+          - key: special.level
+            path: keys
   restartPolicy: Never
